@@ -14,17 +14,18 @@
 </head>
 
 <body>
-	<div class="cardcontainer-fluid">
+	<div class="card container-fluid">
 		<h2 class="card-header text-center">Weather Dashboard</h2>
 		<h5 id="currentDay" class="card-header text-center"></h5>
 		<div class="row">
-			<div class="card col-sm-3" style="width: 18rem">
+			<div class="card col-auto" style="width: 18rem">
 				<div class="card-header form-inline">
 					Search for a City:
 					<input placeholder="Location" class="searchCity" id="cityInputField" type="text" />
-					<button id="submitCity" class="btn btn-primary text-center">Search</button>
+					<div col-center><button id="submitCity" class="btn btn-primary text-center">Search</button>
+						</div>
 				</div>
-				<ul class="list-group list-group-flush" id="menu">
+				<ul class="list-group list-group" id="menu">
 					<li class="list-group-item"></li>
 					<li class="list-group-item"></li>
 					<li class="list-group-item">History Here</li>
@@ -32,7 +33,7 @@
 			</div>
 			<div id="city"></div>
 
-			<div class="text-center" id="menu">
+			<div class="card col-auto text-center" id="menu">
 				<p id="temp"></p>
 
 				<p id="wind"></p>
@@ -42,13 +43,64 @@
 				<p id="uvi"></p>
 
 				<p id="icon"> </p>
-				<p id="fiveDay"></p>
+				
 			</div>
-			<!-- <div id="fiveDay">
-
-				</div> -->
 
 		</div>
+		<div class="container-fluid text-center">
+			<h3>5 Day Forcast</h3>
+			<br>
+			<div class="row">
+			  <div class="col-sm-2 col-sm-offset-1">
+				<div class="wrapper">
+				  <div class="card card-block text-xs-center">
+					<h4 class="card-title"><a href="#" class="btn btn-primary btn-block">Day 1</a></h4>
+					<p class="card-text" id="dayOne"></p>
+					<div id="icon1"></div>
+				  </div>
+				</div>
+			  </div>
+		
+			  <div class="col-sm-2">
+				<div class="wrapper">
+				  <div class="card card-block text-xs-center">
+					<h4 class="card-title"><a href="#" class="btn btn-primary btn-block">Day 2</a></h4>
+					<p class="card-text" id="dayTwo"></p>
+					<div id="icon2"></div>
+				  </div>
+				</div>
+			  </div>
+			  <div class="col-sm-2">
+				<div class="wrapper">
+				  <div class="card card-block text-xs-center">
+					<h4 class="card-title"><a href="#" class="btn btn-primary btn-block">Day 3</a></h4>
+					<p class="card-text" id="dayThree"></p>
+					<div id="icon3"></div>
+				  </div>
+				</div>
+			  </div>
+			  <div class="col-sm-2">
+				<div class="wrapper">
+				  <div class="card card-block text-xs-center">
+					<h4 class="card-title"><a href="#" class="btn btn-primary btn-block">Day 4</a></h4>
+					<p class="card-text" id="dayFour"></p>
+					<div id="icon4"></div>
+				  </div>
+				</div>
+			  </div>
+			  <div class="col-sm-2">
+				<div class="wrapper">
+				  <div class="card card-block text-xs-center">
+					<h4 class="card-title"><a href="#" class="btn btn-primary btn-block">Day 5</a></h4>
+					<p class="card-text" id="dayFive"></p>
+					<div id="icon5"></div>
+				  </div>
+				  <div id=icons></div>
+		  
+				</div>
+			  </div>
+			</div>
+		  </div>
 
 	</div>
 

@@ -49,6 +49,8 @@ $('button').click(function (event) {
 
 		var lon = response.coord.lon;
 
+		//
+
 		$.ajax({
 			url: `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`,
 			method: 'GET',
@@ -72,13 +74,57 @@ $('button').click(function (event) {
 			url: `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`,
 			method: `GET`,
 		}).then(function (response3) {
-			var dayOneA = response3.list[0].main.temp;
-			// var dayOneB=response3.list[0].main.humidity
-			// var dayOneC=response3.list[0].weather[0].icon
-			console.log(dayOneA);
+			for (i=0; i<5; i++){
+			var iconFive=response3.list[i*8].weather[0].icon
+			var iconURL=`http://openweathermap.org/img/wn/${iconFive}@2x.png`
+			console.log(iconURL);
+			var iconImg=`<img src=${iconURL}></img>`
+			var iconsDaily= [$(`#icon1`),$(`#icon2`),$(`#icon3`),$(`#icon4`),$(`#icon5`)];
+			
+			$(`#icons`).append(iconImg[$[{iconsDaily}]]);
 
-			//It console logs but does not append??? Have tried append, text, html?
-			$(`#fiveDay`).append($(dayOneA));
+			
+
+			}
+
+			var dayOneA = Math.floor(response3.list[0].main.temp);
+			var dayOneB=response3.list[0].main.humidity
+			// console.log(dayOneA);
+			var dayTwoA = Math.floor(response3.list[8].main.temp);
+			var dayTwoB=response3.list[8].main.humidity
+			//Day 3 of 5 Day forcast variables
+			var dayThreeA = Math.floor(response3.list[16].main.temp);
+			var dayThreeB=response3.list[16].main.humidity
+			//Day 4 of 5 Day forcast variables
+			var dayFourA = Math.floor(response3.list[24].main.temp);
+			var dayFourB=response3.list[24].main.humidity
+			//Day 5 of 5 Day forecast variables
+			var dayFiveA = Math.floor(response3.list[32].main.temp);
+			var dayFiveB=response3.list[32].main.humidity
+
+			//Appending 5 day forecast
+			$(`#dayOne`).append(`Temperature:${dayOneA}`).append(`</br>`);
+			$(`#dayOne`).append(`Humidity: ${dayOneB}`).append(`</br>`);
+			//Day 2 of 5 day forecast
+			$(`#dayTwo`).append(`Temperature: ${dayTwoA}`).append(`</br>`);
+			$(`#dayTwo`).append(`Humidity: ${dayTwoB}`).append(`</br>`);
+			//Day 3 of 5 day forecast
+			$(`#dayThree`).append(`Temperature: ${dayThreeA}`).append(`</br>`);
+			$(`#dayThree`).append(`Humidity: ${dayThreeB}`).append(`</br>`);
+			//Day 4 of 5 day forecast
+			$(`#dayFour`).append(`Temperature: ${dayFourA}`).append(`</br>`);
+			$(`#dayFour`).append(`Humidity: ${dayFourB}`).append(`</br>`);
+			//Day 4 of 5 day forecast
+			$(`#dayFive`).append(`Temperature: ${dayFiveA}`).append(`</br>`);
+			$(`#dayFive`).append(`Humidity: ${dayFiveB}`).append(`</br>`);
+			
+
+			// for (i=0; {
+			// 	var dayOneA = Math.floor(response3.list[i].main.temp);
+			// 	var dayOneB=response3.list[i].main.humidity;
+			// 	console.log(dayOneA)
+			// 	console.log(dayOneB)
+			// }
 		});
 	});
 
