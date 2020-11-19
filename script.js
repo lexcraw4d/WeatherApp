@@ -12,6 +12,9 @@ $('#currentDay').append(displayTime());
 //Function for getting the UVI, Temperature, Wind Speed, and Humidity
 $('button').click(function (event) {
 	event.preventDefault();
+	
+
+	
 
 	var city = $('#cityInputField').val();
 
@@ -20,6 +23,17 @@ $('button').click(function (event) {
 	var units = '&units=imperial';
 
 	var apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}${units}`;
+
+	var upper= city[0].toUpperCase()
+	var lower=city.substring(1).toLowerCase();
+	// console.log(upper+lower)
+	// 	console.log(upper)
+	//Append city to history
+	var newList = $('<li>')
+	var adding= newList.append(city);
+	$('ul').append(adding)
+
+
 
 	$.ajax({
 		url: apiURL,
@@ -31,12 +45,10 @@ $('button').click(function (event) {
 
 		// var icon="http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png"
 		// let weather=response.weather
-
+		
 		//Clear Previous Searches
-		$(`#displayWeather`).empty();
-		$('#location').empty();
-
-		$(`#location`).append(city);
+		
+		$(`#location`).append(upper+lower);
 		$('#temp')
 			.append(`Temperature:${weatherDescription}` + '°F')
 			.append(`</br>`);
@@ -73,41 +85,42 @@ $('button').click(function (event) {
 			url: `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`,
 			method: `GET`,
 		}).then(function (response3) {
-			//--------------Retreiving and appending icons to DOM---------------------------------------
+			//--------------Retreiving and appending icon to DOM---------------------------------------
 			var iconOne = response3.list[0].weather[0].icon;
 			var iconURL = `http://openweathermap.org/img/wn/${iconOne}@2x.png`;
 			// console.log(iconURL);
 			var iconImg1 = `<img src=${iconURL}></img>`;
-			$(`#dayOne`).append(iconImg1);
+			$(`#icon1`).append(iconImg1);
 			// console.log(iconImg1);
 			var iconTwo = response3.list[8].weather[0].icon;
 			var iconURL2 = `http://openweathermap.org/img/wn/${iconTwo}@2x.png`;
 			// console.log(iconURL);
 			var iconImg2 = `<img src=${iconURL2}></img>`;
-			$(`#dayTwo`).append(iconImg2);
+			$(`#icon2`).append(iconImg2);
 			// console.log(iconImg1);
 
 			var iconThree = response3.list[16].weather[0].icon;
 			var iconURL3 = `http://openweathermap.org/img/wn/${iconThree}@2x.png`;
 			console.log(iconURL);
 			var iconImg3 = `<img src=${iconURL3}></img>`;
-			$(`#dayThree`).append(iconImg3);
+			$(`#icon3`).append(iconImg3);
 			console.log(iconImg3);
 
 			var iconFour = response3.list[24].weather[0].icon;
 			var iconURL4 = `http://openweathermap.org/img/wn/${iconFour}@2x.png`;
 			console.log(iconURL4);
 			var iconImg4 = `<img src=${iconURL4}></img>`;
-			$(`#dayFour`).append(iconImg4);
+			$(`#icon4`).append(iconImg4);
 			console.log(iconImg4);
 
 			var iconFive = response3.list[32].weather[0].icon;
 			var iconURL5 = `http://openweathermap.org/img/wn/${iconFive}@2x.png`;
 			console.log(iconURL5);
 			var iconImg5 = `<img src=${iconURL5}></img>`;
-			$(`#dayFive`).append(iconImg5);
+			$(`#icon5`).append(iconImg5);
 			console.log(iconImg5);
 
+		
 			//----------------------Variables for 5 Day Forecast----------------------------------------------
 			var dayOneA = Math.floor(response3.list[0].main.temp);
 			var dayOneB = response3.list[0].main.humidity;
@@ -125,20 +138,20 @@ $('button').click(function (event) {
 			var dayFiveB = response3.list[32].main.humidity;
 
 			//---------------Appending 5 day forecast variables----------------------------------------------
-			$(`#dayOne`).append(`Temperature:${dayOneA}`).append(`</br>`);
-			$(`#dayOne`).append(`Humidity: ${dayOneB}`).append(`</br>`);
+			$(`#dayOne`).append(`Temperature:${dayOneA}`)
+			$(`#dayOneSub`).append(`Humidity: ${dayOneB}`);
 			//Day 2 of 5 day forecast
-			$(`#dayTwo`).append(`Temperature: ${dayTwoA}`).append(`</br>`);
-			$(`#dayTwo`).append(`Humidity: ${dayTwoB}`).append(`</br>`);
+			$(`#dayTwo`).append(`Temperature: ${dayTwoA}`)
+			$(`#dayTwoSub`).append(`Humidity: ${dayTwoB}`)
 			//Day 3 of 5 day forecast
-			$(`#dayThree`).append(`Temperature: ${dayThreeA}`).append(`</br>`);
-			$(`#dayThree`).append(`Humidity: ${dayThreeB}`).append(`</br>`);
+			$(`#dayThree`).append(`Temperature: ${dayThreeA}`)
+			$(`#dayThreeSub`).append(`Humidity: ${dayThreeB}`)
 			//Day 4 of 5 day forecast
-			$(`#dayFour`).append(`Temperature: ${dayFourA}`).append(`</br>`);
-			$(`#dayFour`).append(`Humidity: ${dayFourB}`).append(`</br>`);
-			//Day 4 of 5 day forecast
-			$(`#dayFive`).append(`Temperature: ${dayFiveA}`).append(`</br>`);
-			$(`#dayFive`).append(`Humidity: ${dayFiveB}`).append(`</br>`);
+			$(`#dayFour`).append(`Temperature: ${dayFourA}`)
+			$(`#dayFourSub`).append(`Humidity: ${dayFourB}`)
+
+			$(`#dayFive`).append(`Temperature: ${dayFiveA}`)
+			$(`#dayFiveSub`).append(`Humidity: ${dayFiveB}`)
 
 			// for (i=0; {
 			// 	var dayOneA = Math.floor(response3.list[i].main.temp);
@@ -155,4 +168,6 @@ $('button').click(function (event) {
 	// $(".icon").html("<img src='" + iconUrl  + "'>");
 	// $('#displayWeather').append(weather);
 	// $('#displayWeather').append(icon);
+	
 });
+
