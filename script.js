@@ -8,7 +8,7 @@ function displayTime() {
 }
 
 $('#currentDay').append(displayTime());
-
+//Append current date and time to same place as 'city'
 //Function for getting the UVI, Temperature, Wind Speed, and Humidity
 $('button').click(function (event) {
 	event.preventDefault();
@@ -19,8 +19,7 @@ $('button').click(function (event) {
 
 	var units = '&units=imperial';
 
-	var apiURL =
-		`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}${units}`;
+	var apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}${units}`;
 
 	$.ajax({
 		url: apiURL,
@@ -69,40 +68,63 @@ $('button').click(function (event) {
 			}
 		});
 
-		//5 Day Forecast
+		//---------------------5 Day Forecast----------------------------------------------------------
 		$.ajax({
 			url: `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`,
 			method: `GET`,
 		}).then(function (response3) {
-			for (i=0; i<5; i++){
-			var iconFive=response3.list[i*8].weather[0].icon
-			var iconURL=`http://openweathermap.org/img/wn/${iconFive}@2x.png`
+			//--------------Retreiving and appending icons to DOM---------------------------------------
+			var iconOne = response3.list[0].weather[0].icon;
+			var iconURL = `http://openweathermap.org/img/wn/${iconOne}@2x.png`;
+			// console.log(iconURL);
+			var iconImg1 = `<img src=${iconURL}></img>`;
+			$(`#dayOne`).append(iconImg1);
+			// console.log(iconImg1);
+			var iconTwo = response3.list[8].weather[0].icon;
+			var iconURL2 = `http://openweathermap.org/img/wn/${iconTwo}@2x.png`;
+			// console.log(iconURL);
+			var iconImg2 = `<img src=${iconURL2}></img>`;
+			$(`#dayTwo`).append(iconImg2);
+			// console.log(iconImg1);
+
+			var iconThree = response3.list[16].weather[0].icon;
+			var iconURL3 = `http://openweathermap.org/img/wn/${iconThree}@2x.png`;
 			console.log(iconURL);
-			var iconImg=`<img src=${iconURL}></img>`
-			var iconsDaily= [$(`#icon1`),$(`#icon2`),$(`#icon3`),$(`#icon4`),$(`#icon5`)];
-			
-			$(`#icons`).append(iconImg[$[{iconsDaily}]]);
+			var iconImg3 = `<img src=${iconURL3}></img>`;
+			$(`#dayThree`).append(iconImg3);
+			console.log(iconImg3);
 
-			
+			var iconFour = response3.list[24].weather[0].icon;
+			var iconURL4 = `http://openweathermap.org/img/wn/${iconFour}@2x.png`;
+			console.log(iconURL4);
+			var iconImg4 = `<img src=${iconURL4}></img>`;
+			$(`#dayFour`).append(iconImg4);
+			console.log(iconImg4);
 
-			}
+			var iconFive = response3.list[32].weather[0].icon;
+			var iconURL5 = `http://openweathermap.org/img/wn/${iconFive}@2x.png`;
+			console.log(iconURL5);
+			var iconImg5 = `<img src=${iconURL5}></img>`;
+			$(`#dayFive`).append(iconImg5);
+			console.log(iconImg5);
 
+			//----------------------Variables for 5 Day Forecast----------------------------------------------
 			var dayOneA = Math.floor(response3.list[0].main.temp);
-			var dayOneB=response3.list[0].main.humidity
+			var dayOneB = response3.list[0].main.humidity;
 			// console.log(dayOneA);
 			var dayTwoA = Math.floor(response3.list[8].main.temp);
-			var dayTwoB=response3.list[8].main.humidity
+			var dayTwoB = response3.list[8].main.humidity;
 			//Day 3 of 5 Day forcast variables
 			var dayThreeA = Math.floor(response3.list[16].main.temp);
-			var dayThreeB=response3.list[16].main.humidity
+			var dayThreeB = response3.list[16].main.humidity;
 			//Day 4 of 5 Day forcast variables
 			var dayFourA = Math.floor(response3.list[24].main.temp);
-			var dayFourB=response3.list[24].main.humidity
+			var dayFourB = response3.list[24].main.humidity;
 			//Day 5 of 5 Day forecast variables
 			var dayFiveA = Math.floor(response3.list[32].main.temp);
-			var dayFiveB=response3.list[32].main.humidity
+			var dayFiveB = response3.list[32].main.humidity;
 
-			//Appending 5 day forecast
+			//---------------Appending 5 day forecast variables----------------------------------------------
 			$(`#dayOne`).append(`Temperature:${dayOneA}`).append(`</br>`);
 			$(`#dayOne`).append(`Humidity: ${dayOneB}`).append(`</br>`);
 			//Day 2 of 5 day forecast
@@ -117,7 +139,6 @@ $('button').click(function (event) {
 			//Day 4 of 5 day forecast
 			$(`#dayFive`).append(`Temperature: ${dayFiveA}`).append(`</br>`);
 			$(`#dayFive`).append(`Humidity: ${dayFiveB}`).append(`</br>`);
-			
 
 			// for (i=0; {
 			// 	var dayOneA = Math.floor(response3.list[i].main.temp);
