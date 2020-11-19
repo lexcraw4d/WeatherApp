@@ -170,4 +170,3 @@ $('button').click(function (event) {
 	// $('#displayWeather').append(icon);
 	
 });
-
