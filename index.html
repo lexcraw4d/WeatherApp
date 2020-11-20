@@ -14,34 +14,32 @@
 </head>
 
 <body>
-	<!-- <div class="card container-fluid d-flex justify-content-center">
-		<div> -->
+
 		<h2 class="card-header text-center">Weather Dashboard
 			<h6 id="date" class="text-center"></h6>
 		</h2>
-		
 		<!-- <h5 id="currentDay" class="card-header text-center"></h5> -->
-		<div class="row d-flex justify-content-center">
+		<div class="row d-flex justify-content-center" id="resetDay">
 			<div  style="width: 18rem">
 				<div class="card-header text-center">
 					Search for a City:
 					<input placeholder="Location" class="searchCity" id="cityInputField" type="text" />
 					<div col-center><button id="submitCity" class="btn btn-primary text-center">Search</button>
-						</div>
+						<ul id="historySearch"></ul>
 					</div>
-						<ul id="historySearch">
-						</ul>
-			</div>
-				<div id="results">
-				<h2 id="location"></h2>
-				<p id="sideIcon"></p>
-				<p id="temp"></p>
-				<p id="wind"></p>
-				<p id="humid"></p>
-				<p id="uvi"></p>
-				<p id="icon"> </p>
+				</div>
 			</div>
 		</div>
+				<div id="results" >
+					<h2 id="location"></h2>
+					<p id="sideIcon"></p>
+					<p id="temp"></p>
+					<p id="wind"></p>
+					<p id="humid"></p>
+					<p id="uvi"></p>
+					<p id="icon"> </p>
+				</div>
+		
 		<div class="container-fluid text-center" id="clearOut">
 			<h3>5 Day Forcast</h3>
 			<h5 id="currentDay" class="text-center"></h5>
@@ -95,21 +93,16 @@
 					<p id="icon5"></p>
 					<p class="card-text" id="dayFive"></p>
 					<p id="dayFiveSub"></p>
-				  
-		  
 				</div>
 			  </div>
-			</div>
-		  </div>
+			
+		  
 
-	</div>
-
-	<script src="https://code.jquery.com/jquery-3.4.1.js"
+		</div>
+		<script src="https://code.jquery.com/jquery-3.4.1.js"
 		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="script.js"> </script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="script.js"> </script>
 
-
-</body>
-
+	</body>
 </html>
