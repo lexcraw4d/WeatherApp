@@ -3,11 +3,11 @@
 // Date and Time updated every ms
 function displayTime() {
 	var today = moment().format('MMMM Do YYYY, h:mm:ss a');
-	$('#currentDay').text(today);
+	$('#date').text(today);
 	// setInterval(displayTime, 1000);
 }
 
-$('#currentDay').append(displayTime());
+$('#date').append(displayTime());
 //Append current date and time to same place as 'city'
 //Function for getting the UVI, Temperature, Wind Speed, and Humidity
 $('button').click(function (event) {
@@ -42,6 +42,11 @@ $('button').click(function (event) {
 		var weatherDescription = Math.floor(response.main.temp);
 		var humidity = response.main.humidity;
 		var windSpeed = response.wind.speed;
+		var mainIcon=response.weather[0].icon;
+		var mainIconURL= `http://openweathermap.org/img/wn/${mainIcon}@2x.png`
+		var iconImgMain = `<img src=${mainIconURL}></img>`;
+		$(`#sideIcon`).append(iconImgMain);
+
 
 		// var icon="http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png"
 		// let weather=response.weather

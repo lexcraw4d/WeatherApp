@@ -1,13 +1,11 @@
-#menu{
-  width:50%;
-  
-}
+
 body{
     font-family: 'Lato', sans-serif;
 }
 
+
 #dayOne #dayTwo #dayThree #dayFour #dayFive{
-    height:100px;
+    height:400px;
     margin: 10px;
     padding: 10px;
 }

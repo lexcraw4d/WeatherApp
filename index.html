@@ -16,9 +16,12 @@
 <body>
 	<!-- <div class="card container-fluid d-flex justify-content-center">
 		<div> -->
-		<h2 class="card-header text-center">Weather Dashboard</h2>
+		<h2 class="card-header text-center">Weather Dashboard
+			<h6 id="date" class="text-center"></h6>
+		</h2>
+		
 		<!-- <h5 id="currentDay" class="card-header text-center"></h5> -->
-		<div class="row">
+		<div class="row d-flex justify-content-center">
 			<div  style="width: 18rem">
 				<div class="card-header text-center">
 					Search for a City:
@@ -26,11 +29,12 @@
 					<div col-center><button id="submitCity" class="btn btn-primary text-center">Search</button>
 						</div>
 					</div>
-						<ul id="menu">
+						<ul id="historySearch">
 						</ul>
 			</div>
-				<div id="menu">
+				<div id="results">
 				<h2 id="location"></h2>
+				<p id="sideIcon"></p>
 				<p id="temp"></p>
 				<p id="wind"></p>
 				<p id="humid"></p>
